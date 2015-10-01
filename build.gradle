@@ -1,0 +1,61 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'idea'
+apply plugin: 'application'
+apply plugin: 'spring-boot'
+
+group 'org.selwyn.backend.rain'
+version = 'git rev-parse HEAD'.execute().text.trim()
+branch = 'git remote'.execute().text.trim() + "/" + 'git symbolic-ref --short HEAD'.execute().text.trim()
+
+processResources {
+    filesMatching("**/git.properties") {
+        expand(project.properties)
+    }
+}
+
+buildscript {
+    ext {
+        springBootVersion = '1.2.4.RELEASE'
+        springloadedVersion = '1.2.4.RELEASE'
+        branch = 'git remote'.execute().text.trim() + "/" + 'git symbolic-ref --short HEAD'.execute().text.trim()
+    }
+    repositories {
+        mavenCentral()
+        maven { url 'http://repo.spring.io/libs-release' }
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath("org.springframework:springloaded:${springloadedVersion}")
+    }
+}
+
+description = """"""
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+mainClassName = "org.selwyn.backend.rain.config.RainConfig"
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    maven { url "http://repo.maven.apache.org/maven2" }
+    maven.url "http://repo.spring.io/snapshot"
+    maven.url "http://repo.spring.io/milestone"
+}
+
+dependencies {
+    compile (group: 'org.springframework.boot', name: 'spring-boot-starter-web', version:'1.2.4.RELEASE')
+
+    testCompile group: 'org.springframework', name: 'spring-test', version:'4.1.4.RELEASE'
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}
+
+tasks.withType(org.springframework.boot.gradle.run.BootRunTask) {
+    systemProperties = System.properties
+}
+
+jar {
+    baseName = "rain"
+    version = ""
+}
