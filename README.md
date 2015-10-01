@@ -3,15 +3,15 @@ A simple microservice built using Spring Boot. Uses Gradle as a build and depend
 
 # Startup Guide
 1. If you have not already, clone this repository to your local machine:
-git clone https://github.com/SelwynL/RainMicroservice.git
+..git clone https://github.com/SelwynL/RainMicroservice.git..
 2. Change into the RainMicroservice directory (This is the directory in which you perform all Gradle and Git commands):
-cd ~/Development/RainMicroservice
+..cd ~/Development/RainMicroservice..
 3. Pull recent changes from Git:
-git pull
+..git pull..
 4. Build the source code and deploy the application with Gradle:
-./gradlew bootRun
+.. ./gradlew bootRun..
 5. Navigate to the following url with a browser:
-http://localhost:8080/rain
+..http://localhost:8080/rain..
 
 You have to stop the microservice in order to build new changes. In order to stop press:
 >Control + C
