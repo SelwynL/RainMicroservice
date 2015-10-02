@@ -40,8 +40,8 @@ repositories {
     mavenLocal()
     mavenCentral()
     maven { url "http://repo.maven.apache.org/maven2" }
-    maven.url "http://repo.spring.io/snapshot"
-    maven.url "http://repo.spring.io/milestone"
+    maven { url "http://repo.spring.io/snapshot" }
+    maven { url "http://repo.spring.io/milestone" }
 }
 
 dependencies {
